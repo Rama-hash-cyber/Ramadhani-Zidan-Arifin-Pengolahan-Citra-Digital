@@ -14,12 +14,18 @@ save_folder = "hasil smile scan"
 if not os.path.exists(save_folder):
     os.makedirs(save_folder)
 
-# Variabel kontrol
-saved_webcam = False
-saved_upload = False
+# Variabel kontrol (menyimpan wajah yang sudah tersimpan)
+saved_faces_webcam = []
+saved_faces_upload = []
+
+def is_new_face(new_face, saved_faces, threshold=30):
+    for (x, y, w, h) in saved_faces:
+        if abs(x - new_face[0]) < threshold and abs(y - new_face[1]) < threshold:
+            return False
+    return True
 
 def proses_gambar_static(img, is_upload=False):
-    global saved_webcam, saved_upload
+    global saved_faces_webcam, saved_faces_upload
     original_frame = img.copy()
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
@@ -36,15 +42,17 @@ def proses_gambar_static(img, is_upload=False):
         if len(smiles) > 0:
             senyum_terdeteksi += 1
 
-            # Simpan hanya jika belum pernah disimpan
-            if is_upload and not saved_upload:
-                filename = os.path.join(save_folder, 'senyum_upload.jpg')
-                cv2.imwrite(filename, original_frame)
-                saved_upload = True
-            elif not is_upload and not saved_webcam:
-                filename = os.path.join(save_folder, 'senyum_webcam.jpg')
-                cv2.imwrite(filename, original_frame)
-                saved_webcam = True
+            face_data = (x, y, w, h)
+            if is_upload:
+                if is_new_face(face_data, saved_faces_upload):
+                    filename = os.path.join(save_folder, f'senyum_upload_{len(saved_faces_upload) + 1}.jpg')
+                    cv2.imwrite(filename, original_frame)
+                    saved_faces_upload.append(face_data)
+            else:
+                if is_new_face(face_data, saved_faces_webcam):
+                    filename = os.path.join(save_folder, f'senyum_webcam_{len(saved_faces_webcam) + 1}.jpg')
+                    cv2.imwrite(filename, original_frame)
+                    saved_faces_webcam.append(face_data)
 
         cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
         for (sx, sy, sw, sh) in smiles:
