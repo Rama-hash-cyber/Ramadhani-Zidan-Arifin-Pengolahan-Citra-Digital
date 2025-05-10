@@ -30,15 +30,19 @@ SmileScan adalah aplikasi berbasis Python yang menggunakan OpenCV untuk mendetek
 2. **Instal dependensi yang dibutuhkan :**
    pip install opencv-python
 3. **Jalankan Aplikasi**
-   python smile_scan.py
+   python smilescan.py
+4. **Baiknya Dijalankan Menggunakan VSCode**
 
 ---
 
 ## 🗂️ Struktur Folder
-SmileScan/
-├── smile_scan.py              # Skrip utama
-├── hasil smile scan          # Folder untuk hasil gambar yang disimpan
-└── README.md                  # Dokumentasi proyek
+smilescan_app/
+├── smilescan.py                       # Skrip utama
+├── hasil smile scan                   # Folder untuk hasil gambar yang disimpan
+├── SmileScan.ipynb                    # Persiapan,Konfigurasi Dataset,Eksplorasi Data, Pre-Processing Gambar
+├── smile.jpg                          # Gambar Untuk SmileScan_Preprocessing
+├── SmileScan_Preprocessing.ipynb      # Pre-Processing Gambar
+└── README.txt                         # Dokumentasi proyek
 
 ---
 
