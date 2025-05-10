@@ -15,7 +15,7 @@ SmileScan adalah aplikasi berbasis Python yang menggunakan OpenCV untuk mendetek
 
 ## ⚙️ Persyaratan
 
-- Python 3.6 atau lebih baru
+- Python 3.8 atau lebih baru
 - OpenCV (cv2)
 - Webcam internal atau eksternal
 
