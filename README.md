@@ -1,23 +1,27 @@
 # 😊 SmileScan - Deteksi Senyum Otomatis dengan OpenCV
 
-SmileScan adalah aplikasi berbasis Python yang menggunakan OpenCV untuk mendeteksi wajah dan senyuman secara real-time melalui webcam. Ketika senyuman terdeteksi, aplikasi akan otomatis menyimpan satu gambar dari frame tanpa kotak deteksi. Cocok untuk demo AI computer vision berbasis Haar Cascade.
+SmileScan adalah aplikasi Python berbasis OpenCV yang mampu mendeteksi wajah dan senyuman secara real-time melalui webcam atau dari gambar yang diupload. Saat senyum terdeteksi, aplikasi akan secara otomatis menyimpan satu gambar dari frame atau gambar upload tanpa kotak deteksi. Cocok untuk demonstrasi AI computer vision berbasis Haar Cascade.
 
 ---
 
 ## 🛠️ Fitur
 
 - ✅ Deteksi wajah secara real-time menggunakan Haar Cascade
-- ✅ Deteksi senyum di dalam wajah yang terdeteksi
-- ✅ Menyimpan satu gambar saat senyum pertama kali terdeteksi
-- ✅ Menampilkan jumlah wajah dan senyum yang terdeteksi pada layar
+- ✅ Deteksi senyum dalam wajah dari webcam dan gambar upload
+- ✅ Menyimpan satu gambar saat senyum pertama kali terdeteksi dari webcam
+- ✅ Menyimpan satu gambar saat senyum terdeteksi dari gambar upload
+- ✅ Tampilkan jumlah wajah dan senyum yang terdeteksi di layar (baik dari webcam maupun upload)
+- ✅ Tekan tombol U untuk mengunggah gambar dari file explorer
+- ✅ Tekan tombol Spasi untuk keluar dari aplikasi
 
 ---
 
 ## ⚙️ Persyaratan
 
 - Python 3.8 atau lebih baru
-- OpenCV (cv2)
-- Webcam internal atau eksternal
+- OpenCV (cv2) \ (opencv-python)
+- Tkinter (biasanya sudah tersedia di Python)
+- Webcam (internal atau eksternal)
 
 ---
 
@@ -31,39 +35,45 @@ SmileScan adalah aplikasi berbasis Python yang menggunakan OpenCV untuk mendetek
    pip install opencv-python
 3. **Jalankan Aplikasi**
    python smilescan.py
-4. **Baiknya Dijalankan Menggunakan VSCode**
+4. **Jalankan Menggunakan VSCode**
 
 ---
 
 ## 🗂️ Struktur Folder
 smilescan_app/
 ├── smilescan.py                       # Skrip utama
-├── hasil smile scan                   # Folder untuk hasil gambar yang disimpan
-├── SmileScan.ipynb                    # Persiapan,Konfigurasi Dataset,Eksplorasi Data, Pre-Processing Gambar
-├── smile.jpg                          # Gambar Untuk SmileScan_Preprocessing
-├── SmileScan_Preprocessing.ipynb      # Pre-Processing Gambar
+├── hasil smile scan                   # Folder untuk hasil gambar yang terdeteksi
+├── SmileScan.ipynb                    # Notebook untuk Persiapan,Konfigurasi Dataset,Eksplorasi Data
+├── smile.jpg                          # Contoh senyum
+├── SmileScan_Preprocessing.ipynb      # Notebook untuk Pre-Processing Gambar
 └── README.txt                         # Dokumentasi proyek
 
 ---
 
 ## 📝 Cara Penggunaan
-- ✅ Aplikasi akan membuka jendela webcam.
-- ✅ Wajah dan senyum akan terdeteksi dan ditampilkan dengan kotak berwarna.
-- ✅ Gambar akan disimpan otomatis di folder hasil smile scan saat senyum pertama kali terdeteksi.
-- ✅ Tekan spasi (spacebar) untuk keluar dari aplikasi.
+
+- ✅ Aplikasi akan membuka jendela webcam secara otomatis saat dijalankan.
+- ✅ Wajah dan senyum akan dideteksi serta ditampilkan dengan kotak berwarna biru dan hijau.
+- ✅ Jika senyum terdeteksi dari webcam, aplikasi menyimpan satu gambar tanpa kotak deteksi ke dalam folder hasil smile scan dengan nama senyum_webcam.jpg.
+- ✅ Tekan tombol U untuk mengunggah gambar. Jika senyum terdeteksi dari gambar tersebut, aplikasi menyimpan satu gambar ke dalam folder hasil smile scan dengan nama senyum_upload.jpg.
+- ✅ Tekan tombol Spasi untuk keluar dari aplikasi.
 
 ---
 
 ## 🤖 Teknologi yang Digunakan
+
 - ✅ OpenCV
 - ✅ Haar Cascade Classifier (pretrained XML dari OpenCV)
+- ✅ Tkinter (untuk membuka file explorer saat upload gambar)
 
 ---
 
 ## 📄 Lisensi
-- MIT License. Silakan digunakan dan dimodifikasi untuk keperluan pribadi maupun edukasi.
+
+- Proyek ini berada di bawah lisensi MIT. Silakan gunakan, ubah, dan distribusikan untuk tujuan pembelajaran maupun pengembangan.
 
 ---
 
 ## 🙌 Kontribusi
--Kontribusi sangat terbuka! Silakan fork, ajukan pull request, atau buka issue jika kamu menemukan bug atau punya     ide pengembangan.
+
+- Kontribusi sangat terbuka! Silakan fork, ajukan pull request, atau buka issue jika kamu menemukan bug atau punya ide pengembangan baru.
